@@ -1,0 +1,35 @@
+{
+  "name": "api_prue_sofex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/121218952415/api_prue_sofex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/121218952415/api_prue_sofex/issues"
+  },
+  "homepage": "https://github.com/121218952415/api_prue_sofex#readme",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "knex": "^2.4.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.22",
+    "objection": "^3.0.4",
+    "pg": "^8.11.1"
+  }
+}
