@@ -1,129 +1,58 @@
 # api_prue_sofex
 
-# api_finve_prue
+# Proyecto de Control de Horas Laborales
 
-API Finve Prue
+Este proyecto es un sistema de control de horas laborales para empleados. Permite realizar el registro de entrada y salida de los empleados, calcular las horas trabajadas y generar informes de pagos.
 
+## Rutas API
 
-Introducción
-API Finve Prue es una API diseñada para manejar productos, tiendas, usuarios y carritos de compras. Proporciona endpoints para crear y gestionar estos elementos, así como para iniciar y cerrar sesión.
+- `/employee`: Ruta para el registro de empleados.
+- `/weeks_worked`: Ruta para la gestión de las semanas de trabajo.
+- `/payhours`: Ruta para generar informes de pagos de empleados.
+- `/check-in-out`: Ruta para registrar la entrada y salida de empleados.
+- `/logicaldelete`: Ruta para realizar eliminación lógica de empleados.
+- `/editemployee`: Ruta para editar la información de un empleado.
 
-Configuración
-Antes de utilizar la API, asegúrate de tener las siguientes configuraciones:
+## Casos de Uso
 
-Asegúrate de tener Node.js version 19.9.0 y npm 
-instalados en tu máquina.
-Clona este repositorio en tu directorio local.
-iniciar  npm run start 
-Ejecuta npm install en el directorio raíz del proyecto para instalar todas las dependencias necesarias.
-Uso de la API
+### Registrar Entrada
+1. El empleado elige la opción "Registrar Entrada" e introduce su número de identificación.
+2. El sistema verifica la existencia del empleado y la semana de trabajo correspondiente a la fecha actual.
+3. Si no existe la semana de trabajo, se crea una nueva con la fecha actual.
+4. Se registra la hora de entrada del empleado en la base de datos.
 
+### Registrar Salida
+1. El empleado elige la opción "Registrar Salida" e introduce su número de identificación.
+2. El sistema verifica la existencia del empleado y la semana de trabajo correspondiente a la fecha actual.
+3. Se busca el registro de entrada sin salida correspondiente a la semana de trabajo actual.
+4. Se calcula la duración total del turno y se actualiza el registro de entrada con la hora de salida y la duración.
 
-
-
-Crear Producto
-URL: http://localhost:4000/createproduct
-
-Método: POST
-
-Body:
-
- {
- "name" : "new product 1 ",
- "price" : 189.25,
- "img" : "https://media.tiffany.com/is/image/Tiffany/EcomItemL2/cadena-de-oro-de-18k-33483988_1057199_ED.jpg?&op_usm=1.0,1.0,6.0&$cropN=0.1,0.1,0.8,0.8&defaultImage=NoImageAvailableInternal&&defaultImage=NoImageAvailableInternal&fmt=webp",
- "storeId" : "44be0bf6-2209-4176-a3cf-89eb2f46e307"
-
-}
-
-Crea un nuevo producto proporcionando su nombre, precio, imagen y el ID de la tienda a la que pertenece.
+### Comenzar Semana
+1. El empleado elige la opción "Comenzar Semana".
+2. El sistema verifica si ya existe una semana de trabajo activa.
+3. Si hay una semana activa, se informa al empleado que ya tiene una semana iniciada.
+4. Si no hay una semana activa, se crea una nueva semana de trabajo con la fecha actual.
 
 
-Crear Tienda
-URL: http://localhost:4000/Store
-
-Método: POST
-
-Body:
-
- {
-    "store" : "new store2",
-    "location" : "Almacenes El Sol, Av. Miguel Hidalgo Ote. 107, Centro, 50000 Toluca de Lerdo, Méx."
- }
-
-Crea una nueva tienda proporcionando su nombre y ubicación.
-
-Crear Usuario
-URL: http://localhost:4000/users/Create
-
-Método: POST
-
-Body:
-
- {
-    "name" : "new use3 ",
-    "email" : "anewu1s1er2@gmail.com",
-    "password" : "thenewuseris1"
-}
-
-Crea un nuevo usuario proporcionando su nombre, correo electrónico y contraseña.
 
 
-Carrito de Compras
+### Editar Empleado
+1. El empleado elige la opción "Editar Empleado".
+2. El sistema permite editar el nombre, apellido y salario del empleado en la base de datos.
 
-URL: http://localhost:4000/neworder
-
-Método: POST
-
-Body:
-
-{
-  "storeId": "44be0bf6-2209-4176-a3cf-89eb2f46e307",
-  "items": [
-    {
-      "productId": "67358b56-37dd-4b2f-b8f0-1032a5d5f288",
-      "quantity": 3
-    },
-    {
-      "productId": "67358b56-37dd-4b2f-b8f0-1032a5d5f288",
-      "quantity": 1
-    }
-  ],
-  "totalQty" : 2 ,
-  "totalPrice" : 1253.36
-  
-}
-Crea un nuevo carrito de compras especificando el ID de la tienda, los productos y sus cantidades, El id se toma de la sesion actual del usuario , la cantidad total de productos y el precio tota
+### Eliminar Empleado
+1. El empleado elige la opción "Eliminar Empleado".
+2. El sistema realiza una eliminación lógica del empleado, desactivándolo en la base de datos.
 
 
-Inicio de Sesión
-URL: http://localhost:4000/auth
-
-Método: POST
-
-Body:
-
-json
-Copy code
-{
-  "email": "anewu1s1er@gmail.com",
-  "password": "123456789"
-}
-Inicia sesión proporcionando el correo electrónico y la contraseña del usuario.
-
-
-Cerrar Sesión
-
-URL: http://localhost:4000/logout
-Método: GET
-
-Cierra la sesión actual.
-
-Nota: El código ha sido diseñado de forma escalable para adaptarse a futuras necesidades y funcionalidades.
+### Nota
+ El código ha sido diseñado de forma escalable para adaptarse a futuras necesidades y funcionalidades.
 
 Recuerda ajustar las rutas y los datos de ejemplo según tu configuración y requisitos específicos.
 
 
-Cosas  a Mejora :  implementar  jwt  
-                    descripcion de producto o promocion 
-                    descripcion de la tienda 
+### Cosas  a Mejora 
+implementar  jwt 
+
+
+
