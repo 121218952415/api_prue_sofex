@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "migrate": "npx knex migrate:latest --knexfile ./knexfile.js",
     "start": "nodemon index.js",
     "test": "jest"
   },
@@ -27,9 +28,12 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "knex": "^2.4.2",
+    "moment": "^2.29.4",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.22",
     "objection": "^3.0.4",
-    "pg": "^8.11.1"
+    "pg": "^8.11.1",
+    "shortid": "^2.2.16",
+    "uuid": "^9.0.0"
   }
 }

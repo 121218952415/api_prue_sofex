@@ -12,6 +12,7 @@ const knex = Knex(knexConfig.development);
 
 // Configuración de Objection.js para utilizar Knex.js como el query builder
 Model.knex(knex);
+Model.createNotFoundError = () => { throw new Error('No se encontró el modelo'); };
 
 
 
